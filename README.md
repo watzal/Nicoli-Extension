@@ -45,4 +45,4 @@ The challenges students and professionals face in managing their tasks and learn
   "manifest_version": 3,
   "trial_tokens": ["GENERATED_TOKEN"],
   ```
-- Save changes and start using the **Nicoli** extension in your browser.
+- Save changes, reload extension and start using the **Nicoli** extension in your browser.
