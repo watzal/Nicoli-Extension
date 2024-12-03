@@ -1,0 +1,40 @@
+{
+    "manifest_version": 3,
+    "name": "Nicoli",
+    "version": "1.0",
+    "description": "Nicoli: The ultimate study companion for smarter learnin, effortless organization, and maximum productivity.",
+    "action": {
+      "default_popup": "popup.html"
+    },
+    
+    "background": {
+        "service_worker": "background.js",
+        "type": "module"
+    },
+    "content_scripts": [
+        {
+            "matches": ["<all_urls>"], 
+            "js": ["content.js"]
+        }
+    ],
+    "icons":{
+        "16": "puzzle16.png",
+        "48": "puzzle48.png",
+        "128": "puzzle128.png"
+    },
+    "host_permissions": [
+        
+        "<all_urls>"  
+    ],
+    "side_panel": {
+      "default_path": "sidePanel.html",
+      "open_behavior": "manual"
+
+    },
+    "content_security_policy": {
+  "extension_pages": "default-src 'self'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com data:; connect-src 'self' https://api.scrapin.io"
+}
+,
+
+    "permissions": ["sidePanel","contextMenus","aiLanguageModelOriginTrial","scripting","activeTab", "notifications","background","alarms","storage"]
+  }

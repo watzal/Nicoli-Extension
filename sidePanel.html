@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Side Panel</title>
+  <link rel="stylesheet" href="sidestyles.css">
+</head>
+<body>
+  <div id="tab-bar">
+    <div class="tab" data-tab="code-explanation">Code Explanation</div>
+    <div class="tab" data-tab="mock-interview">Mock Interview</div>
+  </div>
+  <div id="code-explanation" class="content active">
+    <h1>Code Explanation</h1>
+    <hr />
+    <p id="select-code-to-explain">Choose the code snippet you want explained, and read the detailed breakdown below.</p>
+    <div>
+      <p id="code-explanation-text">Your code explanation will appear here.</p>
+    </div>
+  </div>
+  <div id="mock-interview" class="content">
+    <h1>Mock Interview</h1>
+    <hr />
+    
+
+    <div id="interview-conversation"></div>
+    <form id="user-response-form">
+      <input type="text" id="user-response" placeholder="Your response..." />
+      <button type="submit">Send</button>
+    </form>
+  </div>
+  <script src="sidepanel.js"></script>
+</body>
+</html>

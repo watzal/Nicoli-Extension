@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Nicoli</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+ 
+  <div class="container">
+    <div id="main-screen">
+      <img src="./images/logo.png" class="top-left-image" />
+          <div class="date-time-container">
+            <div class="display-date">
+              <span id="day">day</span>,
+              <span id="daynum">00</span>
+              <span id="month">month</span>
+              <span id="year">0000</span>
+            </div>
+            <div class="display-time"></div>
+          </div>
+          <div class="timer-icon">
+            <i class="fa-solid fa-clock"></i>
+          </div>
+          <div class="leaf-icon">
+            <i class="fa-solid fa-leaf"></i>
+          </div>
+
+      <div class="button-container">
+        <button class="feature-btn" id="summarize">
+            <i class="fa-solid fa-book"></i>
+            Summarize
+        </button>
+        <button class="feature-btn" id="translator">
+          <i class="fa-solid fa-language"></i>
+            Translator
+        </button>
+        <button class="feature-btn" id="questions">
+            <i class="fa-solid fa-circle-question"></i>
+            Questions
+        </button>
+        <button class="feature-btn" id="talktome">
+          <i class="fa-solid fa-comment"></i>
+          Talk to me!
+      </button>
+        <button class="feature-btn" id="todo">
+            <i class="fa-solid fa-list"></i>
+            To Do's
+        </button>
+    </div>
+    </div>
+
+    <!-- Summarize Screen -->
+    <div id="summarize-screen" class="hidden">
+      <div class="screen-header summarize">
+        <button class="back-btn">
+          <i class="fa-solid fa-arrow-left"></i>  
+        </button>
+        <h2 class="fade-in">Text Summarizer</h2>
+        <div class="feature-icon">
+          <i class="fa-solid fa-book-open pulse"></i>
+        </div>
+      </div>
+      <div class="textarea-container">
+        <div class="input-header">
+          <i class="fa-solid fa-pen-fancy"></i>
+          <span>Input Text</span>
+        </div>
+        <textarea id="text-to-summarize" placeholder="Enter or paste your text here..." class="animated-border"></textarea>
+        <div class="text-controls">
+          <span class="word-count">0 words</span>
+          <i class="fa-solid fa-trash-can dustbin-icon bounce-hover"></i>
+        </div>
+      </div>
+      <div class="dropdown-container fade-in">
+        <div class="dropdown-group">
+          <label for="summary-type">
+            <i class="fa-solid fa-list-ul"></i>
+            Summary Type:
+          </label>
+          <select id="summary-type" class="enhanced-select">
+            <option value="key-points">Key Points</option>
+            <option value="tl;dr">TL;DR</option>
+            <option value="teaser">Teaser</option>
+            <option value="headline">Headline</option>
+          </select>
+        </div>
+        <div class="dropdown-group">
+          <label for="summary-length">
+            <i class="fa-solid fa-text-height"></i>
+            Summary Length:
+          </label>
+          <select id="summary-length" class="enhanced-select">
+            <option value="short">Short</option>
+            <option value="medium" selected>Medium</option>
+            <option value="long">Long</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="action-buttons fade-in">
+        <button class="action-btn get-summary pulse-on-hover">
+          <i class="fa-solid fa-wand-magic-sparkles"></i>
+          <span>Get Summary</span>
+        </button>
+      </div>
+
+      <div id="model-status"></div>
+      <div id="download-progress">
+          <div id="download-progress-bar"></div>
+      </div>
+
+      <div id="summary-output" class="summary-output-box fade-in hidden">
+        <div class="output-header">
+          <i class="fa-solid fa-check-circle"></i>
+          <span>Summary Result</span>
+          <button class="copy-btn">
+            <i class="fa-solid fa-copy"></i>
+          </button>
+        </div>
+        <div class="summary-content"></div>
+      </div>
+</div>
+
+   <!-- Translator Screen -->
+   <div id="translator-screen" class="hidden fade-in">
+    <button class="back-btn" id="translator-back">
+      <i class="fa-solid fa-arrow-left"></i>
+    </button>
+    <div class="translator-header">
+      <select id="source-language" class="language-select">
+        <option value="en">English</option>
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="hi">Hindi</option>
+        <option value="zh">Chinese</option>
+      </select>
+      <i class="fa-solid fa-arrow-right-arrow-left exchange-icon"></i>
+      <select id="target-language" class="language-select">
+        <option value="es">Spanish</option>
+        <option value="fr">French</option>
+        <option value="en">English</option>
+        <option value="hi">Hindi</option>
+        <option value="zh">Chinese</option>
+      </select>
+    </div>
+    <div class="translator-body">
+      <textarea class="input-box animated-border" placeholder="Type text here..."></textarea>
+      <textarea class="output-box animated-border" placeholder="Translated text..." readonly></textarea>
+    </div>
+    <button class="translate-button">Translate</button>
+  </div>
+
+    <!-- Todo Screen -->
+    <div id="todo-screen" class="hidden fade-in">
+      <button class="back-btn" id="todo-back">
+        <i class="fa-solid fa-arrow-left"></i>  
+      </button>
+      <div class="todo-app">
+        <div class="app-title">
+          <h2>To-do List</h2>
+          <i class="fa-solid fa-table-list"></i>
+        </div>
+        <div class="row">
+          <input type="text" id="input-box" placeholder="Add your tasks" class="animated-border">
+          <button id="add-task" class="pulse-on-hover">Add</button>
+        </div>
+        <ul id="list-container">
+        </ul>
+      </div>
+    </div>
+
+<!-- Talk Screen -->
+    <div id="talk-screen" class="hidden fade-in">
+
+      <button class="back-btn" id="talk-back">
+        <i class="fa-solid fa-arrow-left"></i>  
+      </button>
+      
+      <div id="chat-container">
+        <div id="response-container"></div>
+    </div>
+      <div class="textarea-container">
+        <textarea id="talk-textarea" placeholder="Type your message here..." class="centered-textarea"></textarea>
+        <button id="go-button">
+          <i class="fa-solid fa-paper-plane"></i>
+        </button>
+      </div>
+      
+    </div>
+
+    
+
+    <!-- Theme Screen -->
+    <div id="theme-screen" class="hidden fade-in">
+      <div class="top-bar">
+        <button class="back-btn" id="theme-back">
+          <i class="fa-solid fa-arrow-left"></i>  
+        </button>
+        
+      </div>
+
+      <div class="theme-selection-grid">
+        <div class="theme-button-container">
+          <div class="theme-image-button" data-theme="nlights">
+            <img src="./images/northern_lights.jpg">
+          </div>
+          <span class="theme-label">Northern Lights</span>
+        </div>
+        <div class="theme-button-container">
+          <div class="theme-image-button" data-theme="cafe">
+            <img src="./images/cafe.jpg">
+          </div>
+          <span class="theme-label">Aesthetic Cafe</span>
+        </div>
+        <div class="theme-button-container">
+          <div class="theme-image-button" data-theme="beach">
+            <img src="./images/beach.jpg">
+          </div>
+          <span class="theme-label">Sunset by the Beach</span>
+        </div>
+        <div class="theme-button-container">
+          <div class="theme-image-button" data-theme="forest">
+            <img src="./images/forest.jpg">
+          </div>
+          <span class="theme-label">Dense Forest</span>
+        </div>
+        <div class="theme-button-container">
+          <div class="theme-image-button" data-theme="fire">
+            <img src="./images/fire.jpg">
+          </div>
+          <span class="theme-label">Fiery Fire</span>
+        </div>
+        <div class="theme-button-container">
+          <div class="theme-image-button" data-theme="flowers">
+            <img src="./images/flowers.jpg">
+          </div>
+          <span class="theme-label">Blooming Flowers</span>
+        </div>
+      </div>
+    </div>
+
+<!-- Questions Screen -->
+    <div id="questions-screen" class="hidden fade-in">
+      <div class="top-bar">
+        <button class="back-btn">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+      </div>
+      <div class="input-area">
+        <textarea id="question-input" placeholder="Enter your text here..."></textarea>
+      </div>
+      <div class="button-box">
+        <button class="btn-generate">
+          Generate Questions
+          <!-- <i class="fa fa-circle-o-notch fa-spin hidden spinner"></i> -->
+        </button>
+        
+      </div>
+      <div id="question-results">
+        <div id = "question-cards"></div>
+      </div>
+    </div>
+    
+    <!-- Timer Screen -->
+<div id="timer-screen" class="hidden fade-in">
+    <button class="back-btn" id="timer-back">
+        <i class="fa-solid fa-arrow-left"></i>  
+      </button>
+      <div class="app-title">
+        <h2>Timer</h2>
+    <i class="fa-solid fa-clock"></i>
+      </div>
+    
+    <div id="chronometer">
+      <div id="display">00:00:00</div>
+      <div id="countdownInput">
+        <input type="number" id="hours" placeholder="Hours" min="0" />
+        <input type="number" id="minutes" placeholder="Minutes" min="0" />
+        <input type="number" id="seconds" placeholder="Seconds" min="0" />
+      </div>
+      <div id="controls">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+        <button id="reset">Reset</button>
+        <button id="countdown">Countdown</button>
+      </div>
+    </div>
+    <div id="alert" class="hidden">
+      <p id="alertText">Time up!</p>
+      <button id="alertButton">Ok</button>
+    </div>
+  </div>
+  </div>
+  <script src="popup.js"></script>
+
+</body>
+</html>
