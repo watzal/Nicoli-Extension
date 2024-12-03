@@ -28,3 +28,9 @@ The challenges students and professionals face in managing their tasks and learn
   - **ScrapIn API**
 
 ## 🚀 Installation Guide
+- Clone the repository using `git clone https://github.com/watzal/Nicoli-Extension.git`.
+- Navigate to the main folder and create a file named as `config.js`.
+- Copy the contents from the provided `config.template.js` into your new `config.js` file.
+- Generate your **ScrapIn API key** from [ScrapIn](https://www.scrapin.io/) and paste it into `config.js` file.
+- Make sure your browser has the required model installed for **Google’s built-in AI APIs** to work seamlessly with **Nicoli**. If it’s not installed, you may not be able to use AI-powered features like text summarization and mock interviews.
+- 
